@@ -1281,7 +1281,7 @@ public:
     {
         m_currentScoreDef = NULL;
         m_encoded = false;
-        m_firstScoreDef = true;
+        m_firstScoreDef = false;
         m_hasFermata = false;
         m_hasTempo = false;
         m_doc = doc;
