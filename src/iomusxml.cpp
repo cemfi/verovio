@@ -1375,8 +1375,10 @@ void MusicXmlInput::ReadMusicXmlNote(pugi::xml_node node, Measure *measure, std:
 
     pugi::xpath_node notations = node.select_single_node("notations[not(@print-object='no')]");
 
-    // bool cue = false;
-    // if (node.select_single_node("cue") || node.select_single_node("type[@size='cue']")) cue = true;
+    bool isCue = false;
+    if (node.select_single_node("cue") || node.select_single_node("type[@size='cue']")) {
+        isCue = true;
+    }
 
     // duration string and dots
     std::string typeStr = GetContentOfChild(node, "type");
@@ -1575,6 +1577,11 @@ void MusicXmlInput::ReadMusicXmlNote(pugi::xml_node node, Measure *measure, std:
             else {
                 note->SetGrace(GRACE_unknown);
             }
+        }
+
+        // cue notes
+        if (isCue) {
+            note->SetCue(BOOLEAN_true);
         }
 
         // set attributes to the note if we are not in a chord
