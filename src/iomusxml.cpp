@@ -1470,6 +1470,8 @@ void MusicXmlInput::ReadMusicXmlNote(pugi::xml_node node, Measure *measure, std:
             rest->SetDur(ConvertTypeToDur(typeStr));
             rest->SetDurPpq(atoi(GetContentOfChild(node, "duration").c_str()));
             if (dots > 0) rest->SetDots(dots);
+            // cue notes
+            if (isCue) rest->SetCue(BOOLEAN_true);
             // FIXME MEI 4.0.0
             // if (cue) rest->SetSize(SIZE_cue);
             if (!stepStr.empty()) rest->SetPloc(ConvertStepToPitchName(stepStr));
