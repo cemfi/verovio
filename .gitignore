@@ -64,3 +64,6 @@ emscripten/npm-dev/node_modules
 # VS Code files
 .vscode/settings.json
 main
+
+# IntelliJ
+.idea
